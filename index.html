@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MURDOKU</title><link rel="stylesheet" href="style.css"></head><body>
+<header><h1>MURDOKU</h1><span id="roomTag"></span></header>
+
+<main id="home" class="card center"><h2>Cuevas subterráneas</h2>
+<p>Resolvé el desafío junto con tus compañeros.</p>
+<div class="row"><button class="big" id="btnShowCreate">Crear partida</button>
+<button class="big alt" id="btnShowJoin">Unirse a una partida</button></div>
+<div id="createBox" hidden><input id="tkey" type="password" placeholder="Clave de docente">
+<button class="big" id="btnCreate">Crear</button></div><p class="err" id="homeErr"></p></main>
+
+<main id="join" class="card center" hidden><h2>Unirse a la partida</h2>
+<input id="jcode" placeholder="Código (ej. K7QM)" maxlength="4" autocapitalize="characters">
+<input id="jname" placeholder="Nombre: Martina" maxlength="20">
+<details><summary>Soy docente</summary><input id="jkey" type="password" placeholder="Clave de docente"></details>
+<button class="big" id="btnJoin">Entrar</button><p class="err" id="joinErr"></p></main>
+
+<main id="lobby" class="card center" hidden><h2>Partida creada</h2>
+<p>Código de partida</p><div class="code" id="lcode"></div>
+<input id="llink" readonly><div class="row"><button class="big alt" id="btnCopy">Copiar enlace</button>
+<button class="big" id="btnStart">Comenzar</button></div>
+<p>Conectados: <b id="lcount">0</b></p><div id="lplayers" class="chips"></div></main>
+
+<main id="wait" class="card center" hidden><h2>¡Ya estás dentro!</h2><p>Esperando a que la docente comience…</p><div id="wplayers" class="chips"></div></main>
+
+<main id="game" class="game" hidden>
+ <section><div id="banner" class="banner" hidden></div><div id="board" class="board"></div>
+  <div class="legend" id="legend"></div></section>
+ <aside>
+  <div class="panel"><h3>Casillero <span id="selName">—</span></h3><div id="picker" class="picker"></div>
+   <p class="hint">Teclado: A B C D E F V · Borrar/Supr para borrar · flechas para moverte</p></div>
+  <button class="big full" id="btnCheck">COMPROBAR</button><p id="msg" class="msg"></p>
+  <div class="panel"><h3>Jugadores conectados (<span id="pcount">0</span>)</h3><div id="players" class="chips"></div>
+   <p class="hint"><span id="progress"></span></p></div>
+  <div class="panel" id="teacher" hidden><h3>Panel docente</h3><div class="tbtns">
+   <button id="tLock"></button><button id="tReveal"></button><button id="tReset">Reiniciar</button>
+   <button id="tEnd">Finalizar</button><button id="tNew">Nueva partida</button></div></div>
+  <div class="panel"><h3>Pistas</h3><ul id="clues" class="clues"></ul>
+   <p class="hint">Cada personaje va en una fila y una columna distintas. Hay un pescador 🐟, una fabricante de herramientas 🪓, un cazador 🏹 y un domador de lobos 🐺. Las rocas 🪨 están bloqueadas.</p></div>
+ </aside>
+</main>
+
+<div id="overlay" class="overlay" hidden><div class="card center"><h2 id="ovT"></h2><p id="ovP"></p><button class="big" id="ovX">Cerrar</button></div></div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<script src="config.js"></script><script src="puzzle.js"></script><script src="app.js"></script>
+</body></html>

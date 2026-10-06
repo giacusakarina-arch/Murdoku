@@ -1,0 +1,12 @@
+{
+  "rules": {
+    "rooms": {
+      "$room": {
+        ".read": true,
+        "meta": { ".write": true },
+        "players": { ".write": true },
+        "cells": { ".write": "!root.child('rooms').child($room).child('meta').child('locked').val()" }
+      }
+    }
+  }
+}
